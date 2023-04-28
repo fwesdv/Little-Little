@@ -20,7 +20,6 @@ const Navbar =(props: Prop)=>{
                     <div className={styles.phoneNumber}>
                         <FontAwesomeIcon icon={faPhone}className={styles.phoneNumber_icon} />
                         123456789
-                        
                     </div>       
                 </nav>
             </div>

@@ -1,7 +1,12 @@
+:root{
+  display: flex;
+  justify-content: center;
+}
 .App {
   position: relative;
-  width: 100%;
+  width: 1517px;
   height: 856px;
+  align-items: center;
   background-image: url("./assets/trang\ chủ.jpg");
   background-size: 100%;
 }
