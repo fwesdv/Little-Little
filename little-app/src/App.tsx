@@ -1,16 +1,31 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css'
-import Navbar from './navbar';
-import Home from './page/Home';
-
+import { publicRoutes } from './router/indext';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 function App() {
   return (
 
-    <div className="App">
-      <Navbar></Navbar>
-      <Home></Home>
-    </div>
+  <BrowserRouter>
+              <Routes>
+                  {publicRoutes.map((route, index) => {
+
+                      const Page = route.component;
+                      return (
+                        
+                          <Route
+                              key={index}
+                              path={route.path}
+                              element={
+                                
+                                <Page />
+                              }
+                          />
+                      );
+                  })}
+
+              </Routes>
+        </BrowserRouter>
   );
 }
 
