@@ -6,12 +6,14 @@ import start from "../assets/start.png"
 import logo_damsen from "../assets/logo_damsen.png"
 import girl from "../assets/girl.png"
 import human from '../assets/4_human.png'
-
+import Navbar from "../navbar";
 
 type Prop={}
 const Home =(props: Prop)=>{
     return(
-        <div className={styles.container}>
+    <>
+    <Navbar></Navbar>
+    <div className={styles.container}>
             <img src={human} alt="human" className={styles.human} />
             <img src={girl} alt="girl" className={styles.girl} />
         <div className={styles.body}>
@@ -75,11 +77,10 @@ const Home =(props: Prop)=>{
                     <div className={styles.body_red_tiker}></div>
                 </div>
             </div>
-            
-
             </div>
         </div>
     </div>
+    </>
     )
 }
 export default Home
