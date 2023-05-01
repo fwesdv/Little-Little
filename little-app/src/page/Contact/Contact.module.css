@@ -11,7 +11,170 @@
     width: 1517px;
     height: 856px;
     align-items: center;
-    background-image: url("../../assets/Sự\ kiện.jpg");
+    background-image: url("../../assets/contact\ us.png");
     background-size: 100%;
     background-repeat: no-repeat;
 }
+.title{
+    font-family: 'iCiel Koni';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 90px;
+    line-height: 100px;
+    padding-top: 110px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Alex {
+    position: absolute;
+    left: 0px;
+    bottom: 115px;
+    height: auto;
+    width: 252px;
+}
+.contai{
+    height: 507px;
+    margin-left: 145px;
+    margin-top: 23px;
+    display:flex;
+    z-index: 4;
+}
+
+.contai>div{
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain; 
+}
+.contai_main{
+    background-image: url('../../assets/bigNote.png');
+    width: 750px;
+    height: 100%;
+}
+
+.contai_main>div{
+    margin: 50px 30px 0 50px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    
+}
+.contai_info{
+    height: 507px;
+    width: 450px;
+    background-repeat: no-repeat;
+    background-size: contain; 
+    margin-left: 30px;
+}
+.contai_info>div{
+    height: 160px;
+    width: 450px;
+    background-repeat: no-repeat;
+    background-size: contain; 
+    z-index: 4;
+    margin-bottom: 13px;
+
+}
+.contai_info>div>p{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 10px 0px 0px 100px;
+    padding-right: 50px;
+
+}
+.contai_info>div>p:first-child{
+    padding-top: 40px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+}
+.dc{
+    background-image: url('../../assets/địa\ chỉ.png');
+    height: 160px;
+    width: 450px;
+    background-repeat: no-repeat;
+    background-size: contain; 
+    z-index: 4;
+    margin-bottom: 13px;
+}
+.email{
+
+    background-image: url('../../assets/email.png');
+}
+.dt{
+    background-image: url('../../assets/điện\ thoại.png');
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+    width: 615px;
+}
+.info>div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 24px;
+    height: 115px;
+}
+.info>.nameAndphone{
+    width: 40%;
+}
+.info>.emailAndAddress{
+    width: 60%;
+}
+.info>div>.input{
+    padding: 10px;
+    height: 30px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 6px;
+    border: none;
+    width: 100%;
+}
+.note{
+  
+    padding: 10px;
+    height: 150px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 6px;
+    border: none;
+    width: 615px;
+}
+.btn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.btn>.btn1 {
+    width: 220px;
+    height: 40px;
+    background: #FF000A;
+    border: none;
+    border-radius: 5px ;
+    filter: drop-shadow(0px 3px 2px #000000);
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+input::placeholder {
+    text-align: left;
+    vertical-align: top;
+  }
