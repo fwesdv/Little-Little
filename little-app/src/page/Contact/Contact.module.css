@@ -1,0 +1,17 @@
+:root{
+    display: flex;
+    justify-content: center;
+    font-size: 100%;
+}
+.container {
+    padding-left: 75px;
+    padding-right: 61px;
+    box-sizing: border-box;
+    position: relative;
+    width: 1517px;
+    height: 856px;
+    align-items: center;
+    background-image: url("../../assets/Sự\ kiện.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}

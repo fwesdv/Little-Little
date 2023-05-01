@@ -9,21 +9,15 @@ function App() {
   <BrowserRouter>
               <Routes>
                   {publicRoutes.map((route, index) => {
-
                       const Page = route.component;
                       return (
-                        
                           <Route
                               key={index}
                               path={route.path}
-                              element={
-                                
-                                <Page />
-                              }
-                          />
+                              element={<Page /> }
+                              />
                       );
                   })}
-
               </Routes>
         </BrowserRouter>
   );

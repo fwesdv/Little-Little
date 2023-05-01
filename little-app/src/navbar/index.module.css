@@ -26,8 +26,7 @@
     align-items: center;
     gap: 30px;
 }
-
-.navbar_content_item{
+.navbar_content_item>a{
     box-sizing: border-box;
     display: flex;
     align-items: flex-start;
@@ -36,18 +35,40 @@
     justify-content: center;
     width: 144px;
     height: 42px;
-    border: 2px solid #FFFFFF;
     border-radius: 33px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
+    color:#ffff;
+    text-decoration:none
 
-
-    color: #FFFFFF;
 }
-.navbar_content_item :hover{}
+.navbar_content_item{
+    width: 144px;
+    height: 42px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration:none
+}
+.navbar_content_item :hover{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 10px 24px;
+    justify-content: center;
+    width: 144px;
+    height: 42px;
+    border: 2px solid #FFFFFF;
+    border-radius: 33px;
+    color:#ffff;
+}
 
 
 .phoneNumber{
