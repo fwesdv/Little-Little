@@ -1,7 +1,6 @@
 
 .navbar{
-
-    z-index: 4;
+    z-index: 6;
     background-image: url(../assets/Vector\ 2.png);
     background-position: bottom;
     position:fixed;
@@ -9,14 +8,12 @@
     height: 127px;
 }
 .navbar_content{
-
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 200px;
 }
 .little_logo{
-  
     width: 200px;
     height: auto;
 }
@@ -43,7 +40,6 @@
     line-height: 22px;
     color:#ffff;
     text-decoration:none
-
 }
 .navbar_content_item{
     width: 144px;

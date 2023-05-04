@@ -1,0 +1,227 @@
+
+.container {
+    padding-left: 75px;
+    padding-right: 61px;
+    box-sizing: border-box;
+    position: relative;
+    width: 1517px;
+    height: 856px;
+    background-image: url("../../assets/contact\ us.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+.title{
+    font-family: 'iCiel Koni';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 70px;
+    line-height: 100px;
+    padding-top: 110px;
+    color: #FFFFFF;
+}
+.containerMain{
+    width: 1220px;
+    height: 500px;
+    margin-bottom: 100px;
+    position: relative;
+    flex-direction: row;
+    display: flex;
+}
+
+.body_note_1 {
+    gap: 10px;
+    width: 800px;
+    z-index: 4;
+    height: 100%;
+    background-image: url('../../assets/note_1.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+}
+.info_h:first-child{
+    margin-left: 100px;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-top: 70px;
+}
+.info_h>div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.info_h>div>input,
+.info>div:nth-child(2)>input
+{
+    padding: 10px;
+    height: 40px;
+    width: 200px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 10px;
+    border: none;
+}
+.info_h>div>div>input{
+    width: 100px;
+    padding: 10px;
+    height: 40px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 10px;
+    border: none;
+}
+.info>div>input
+{
+    padding: 10px;
+    height: 40px;
+    width: 350px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 10px;
+    border: none;
+}
+
+.info>div{
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.body_note_2 {
+    position: absolute;
+    left: 759px;
+    z-index: 3;
+    background-image: url('../../assets/note_2.png');
+    width: 10%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.body_note_3 {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 4;
+    left: 823px;
+    width: 411px;
+    height: 100%;
+    padding-top: 60px;
+    background-image: url('../../assets/note3.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+.body_note_3>div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.body_note_3>div>div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.body_note_3>div>div>input,
+.body_note_3>div>div>div>input{
+    padding: 10px;
+    height: 40px;
+    width: 300px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 10px;
+    border: none;
+}
+.body_note_3>div>div:last-child>input{
+    width: 100px;
+}
+
+.dateAndBtn>div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.dateAndBtn>div>.date {
+    width: 87%;
+}
+.dateAndBtn>div>.calendar_icon {
+    width: 30px;
+    height: 30px;
+    background-image: url('../../assets/calendar_icon.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    filter: drop-shadow(0px 3px 2px #DE9959);
+    margin-top: 5px;
+}
+
+.bodyTitle{
+    width: 411px;
+    display: flex;
+    padding-left: 100px;
+    position: absolute;
+    width: 800px;
+    height: 80px;
+}
+.body_note_3>.body_red_tiker,
+.body_red_tiker {
+    position: absolute;
+    top: -20px;
+    width: 320px;
+    height: 80px;
+    z-index: 5;
+    background-image: url('../../assets/red_tiker\(long\).png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    color: #fff;
+    font-family: 'iCiel Koni';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 21px;
+    line-height: 41px;
+}
+
+.btn {
+    width: 235px;
+    height: 50px;
+    background: #FF000A;
+    border: none;
+    border-radius: 5px ;
+    filter: drop-shadow(0px 3px 2px #000000);
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+}
+.Trini {
+    position: absolute;
+    left: 0px;
+    bottom: 115px;
+    height: auto;
+    width: 252px;
+    z-index: 6;
+}
+

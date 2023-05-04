@@ -24,7 +24,8 @@ const Event =(props: Prop)=>{
                                 <p>30/05/2021 - 01/06/2021</p>
                             </div>
                             <p>25.000 VNĐ</p>
-                            <button className={styles.btn}>Xem chi tiết</button>
+
+                            <a href="/eventDetails"className={styles.btn}>Xem chi tiết</a>
                         </div>
                     </div>
                     <div className={styles.event2}>
@@ -38,7 +39,7 @@ const Event =(props: Prop)=>{
                                 <p>30/05/2021 - 01/06/2021</p>
                             </div>
                             <p>25.000 VNĐ</p>
-                            <button className={styles.btn}>Xem chi tiết</button>
+                            <a href="/eventDetails"className={styles.btn}>Xem chi tiết</a>
                         </div>
                     </div>
                     <div className={styles.event3}>
@@ -52,7 +53,7 @@ const Event =(props: Prop)=>{
                                 <p>30/05/2021 - 01/06/2021</p>
                             </div>
                             <p>50.000 VNĐ</p>
-                            <button className={styles.btn}>Xem chi tiết</button>
+                            <a href="/eventDetails"className={styles.btn}>Xem chi tiết</a>
                         </div>
                     </div>
                     <div className={styles.event4}>
@@ -66,7 +67,7 @@ const Event =(props: Prop)=>{
                                 <p>30/05/2021 - 01/06/2021</p>
                             </div>
                             <p>55.000 VNĐ</p>
-                            <button className={styles.btn}>Xem chi tiết</button>
+                            <a href="/eventDetails"className={styles.btn}>Xem chi tiết</a>
                         </div>
                     </div>
                 </div>

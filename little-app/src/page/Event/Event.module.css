@@ -121,7 +121,7 @@
     display: flex;
     align-items: center;
     letter-spacing: 0.005em;
-    
+    margin-bottom: 5px;
     color: #FA7D09;
 }
 .calendar_icon {
@@ -134,8 +134,8 @@
     filter: drop-shadow(0px 3px 2px #DE9959);
 }
 .btn {
-    width: 200px;
-    height: 40px;
+    padding: 5px 30px 5px 30px;
+
     background: #FF000A;
     border: none;
     border-radius: 5px ;
@@ -144,4 +144,6 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
+    text-decoration:none
+
 }

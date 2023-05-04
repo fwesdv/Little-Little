@@ -1,8 +1,4 @@
-:root{
-    display: flex;
-    justify-content: center;
-    font-size: 100%;
-}
+
 .container {
 
     padding-left: 75px;
@@ -186,11 +182,12 @@
 .body_note_3>div>input,
 .body_note_3>div>div>input {
     padding: 10px;
-    height: 30px;
+    height: 40px;
+    width: 150px;
     box-sizing: border-box;
     background: #FFFFFF;
     box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
-    border-radius: 6px;
+    border-radius: 10px;
     border: none;
 }
 
