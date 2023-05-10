@@ -1,0 +1,17 @@
+.dateAndBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+.dateAndBtn>.date {
+width: 100%;
+padding: 10px;
+height: 40px;
+box-sizing: border-box;
+background: #FFFFFF;
+box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+border-radius: 10px;
+border: none;
+}

@@ -1,15 +1,26 @@
 import { type } from "os"
 import logo from '../assets/image.png';
-import React, {useState} from 'react'
 import styles from './Home.module.css'
 import start from "../../assets/start.png"
 import logo_damsen from "../../assets/logo_damsen.png"
 import girl from "../../assets/girl.png"
 import human from '../../assets/4_human.png'
 import Navbar from "../../navbar";
-
+import { useState, useEffect } from 'react';
+import MyComponent from "../../component/calender/calender"
 type Prop={}
 const Home =(props: Prop)=>{
+
+
+        const [email, setEmail] = useState('');
+        const handleSubmit = (e: { preventDefault: () => void; }) => {
+            e.preventDefault();
+            if (!email) {
+                alert('Vui lòng nhập email');
+                return;
+              } 
+            // Gọi API đăng nhập tại đây
+        };
     return(
     <>
     <Navbar></Navbar>
@@ -56,23 +67,26 @@ const Home =(props: Prop)=>{
                 <div className={styles.body_note_3}>
 
                     <div className={styles.body_selection} >
-                    <input disabled type="text" placeholder=" " value={"Gói gia đình"} />
-                    <div className={styles.drop_icon}></div>
+
+                        <select name="cars" id="cars">
+                            <option value="Gd">Gói gia đình</option>
+                            <option value="Gd1">Gói gia đình1</option>
+                            <option value="Gd2">Gói gia đình2</option>
+                            <option value="Gd3">Gói gia đình3</option>
+                        </select>
+                       
                     </div>
 
                     <div className={styles.TicketAndDate}>
                     <input className={styles.Ticket}type="text"placeholder="Số lượng vé"/>
-                    <div className={styles.dateAndBtn}>
-                        <input className={styles.date}type="text"placeholder="Ngày sử dụng"/>
-                        <div className={styles.calendar_icon}></div>
-                    </div>
+                    <MyComponent></MyComponent>
                     </div>
 
                     <input type="text" placeholder="Họ và tên" />
                     <input type="text" placeholder="Số điện thoại" />
                     <input type="text" placeholder="Địa chỉ email" />
 
-                    <button className={styles.btn}>Đặt vé</button>
+                    <button type="submit" id="submit"  className={styles.btn}>Đặt vé</button>
 
                     <div className={styles.body_red_tiker}></div>
                 </div>
