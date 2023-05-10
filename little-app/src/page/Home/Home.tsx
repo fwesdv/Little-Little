@@ -7,18 +7,37 @@ import girl from "../../assets/girl.png"
 import human from '../../assets/4_human.png'
 import Navbar from "../../navbar";
 import { useState, useEffect } from 'react';
+import { DatePicker } from 'antd';
 import MyComponent from "../../component/calender/calender"
+
 type Prop={}
 const Home =(props: Prop)=>{
 
 
-        const [email, setEmail] = useState('');
+        const [Ticket, setTicket] = useState('');
+        const [Name, setName] = useState('');
+        const [Phone, setPhone] = useState('');
+        const [Email, setEmail] = useState('');
+        const [Package, setPackage] = useState('');
+        const [Datepicker, setDatepicker] = useState('');
         const handleSubmit = (e: { preventDefault: () => void; }) => {
             e.preventDefault();
-            if (!email) {
+            if (!Ticket) {
+                alert('Vui lòng nhập số lượng vé');
+                return;
+            }else if (!Name) {
+                alert('Vui lòng nhập họ và tên');
+                return;
+            } else if (!Phone) {
+                alert('Vui lòng nhập số điện thoại');
+                return;
+            }else if (!Email) {
                 alert('Vui lòng nhập email');
                 return;
-              } 
+            }else if (!Package) {
+                alert('Vui lòng chọn gói');
+                return;
+            }
             // Gọi API đăng nhập tại đây
         };
     return(
@@ -65,30 +84,29 @@ const Home =(props: Prop)=>{
                 <div className={styles.body_note_2}></div>
 
                 <div className={styles.body_note_3}>
-
+                <form onSubmit={handleSubmit} >
                     <div className={styles.body_selection} >
-
-                        <select name="cars" id="cars">
+                        <select name="cars" id="Package" onChange={(e) => setPackage(e.target.value)} >
                             <option value="Gd">Gói gia đình</option>
                             <option value="Gd1">Gói gia đình1</option>
                             <option value="Gd2">Gói gia đình2</option>
                             <option value="Gd3">Gói gia đình3</option>
                         </select>
-                       
                     </div>
 
                     <div className={styles.TicketAndDate}>
-                    <input className={styles.Ticket}type="text"placeholder="Số lượng vé"/>
-                    <MyComponent></MyComponent>
+                        <input className={styles.Ticket}type="text"placeholder="Số lượng vé" onChange={(e) => setTicket(e.target.value)} />
+                        <MyComponent />
                     </div>
 
-                    <input type="text" placeholder="Họ và tên" />
-                    <input type="text" placeholder="Số điện thoại" />
-                    <input type="text" placeholder="Địa chỉ email" />
+                    <input type="text" placeholder="Họ và tên" onChange={(e) => setName(e.target.value)}/>
+                    <input type="text" placeholder="Số điện thoại" onChange={(e) => setPhone(e.target.value)}/>
+                    <input type="text" placeholder="Địa chỉ email" onChange={(e) => setEmail(e.target.value)}/>
 
                     <button type="submit" id="submit"  className={styles.btn}>Đặt vé</button>
 
                     <div className={styles.body_red_tiker}></div>
+                </form>
                 </div>
             </div>
             </div>

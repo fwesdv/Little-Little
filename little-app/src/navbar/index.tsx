@@ -8,18 +8,25 @@ import {Link } from 'react-router-dom';
 
 type Prop={}
 const Navbar =(props: Prop)=>{
+    const [isClicked, setIsClicked] = useState(false);
+    const handleClick = () => {
+        setIsClicked(!isClicked); // toggle trạng thái của isClicked
+      }
+    const divStyle = {
+           
+    };
     return(
- 
+
             <div className={styles.navbar}>   
                 <nav className={styles.navbar_content}>
                     <img src={logo} className={styles.little_logo} alt="logo" />
                     <ul className={styles.navbar_content_list}>
                     
-                        <li className={styles.navbar_content_item}>
+                        <li style={divStyle} onClick={handleClick} className={styles.navbar_content_item}>
                             <a href="/">Trang chủ</a></li>
-                        <li className={styles.navbar_content_item}>
+                        <li style={divStyle} onClick={handleClick} className={styles.navbar_content_item}>
                             <a href="/event">Sự kiện</a></li>
-                        <li className={styles.navbar_content_item}>
+                        <li style={divStyle} onClick={handleClick} className={styles.navbar_content_item}>
                             <a href="/contact">Liên hệ</a></li>
                     </ul>
                     <div className={styles.phoneNumber}>
