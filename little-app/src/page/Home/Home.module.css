@@ -203,10 +203,11 @@
     flex-direction: row;
     align-items: center;
     gap: 8px;
+    width: 60%;
 }
 
 .body_note_3>form>div>.dateAndBtn>.date {
-    width: 84%;
+    width: 100%;
 }
 
 .body_note_3>form>div>.dateAndBtn>.calendar_icon {

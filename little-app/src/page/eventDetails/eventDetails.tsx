@@ -1,14 +1,57 @@
 import { type } from "os"
 import logo from '../assets/image.png';
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import styles from './eventDetails.module.css'
-import Navbar from "../../navbar";
+import { useParams } from "react-router-dom";
+import { eventCollection, firestore } from "../lb/controller";
+import { DocumentData, DocumentReference, DocumentSnapshot, QuerySnapshot, doc, getDoc, onSnapshot } from "@firebase/firestore";
+import { events } from "../../types/events";
+import Infomation from "../../component/InfomationEvent/eventDIF";
+import { firebase } from "../lb/firebase";
 
-type Prop={}
-const Contact =(props: Prop)=>{
+function EventDetails (){
+    const { idp } =useParams();
+    const getevent = doc (firestore, `/event/${idp}` )
+    const [isloading, setIsloading] = useState(false);
+
+    const [event, setevent] = useState({});
+    useEffect(()=>{
+        const fetchData = async () =>{
+            setIsloading(true);
+            const docsnap = await getDoc(getevent);
+            if(docsnap.exists()){
+                const newevent={
+                    id: docsnap.id,
+                    ...docsnap.data(),
+                }
+                setevent(newevent);
+                setIsloading(false);
+            }else{
+                console.log("no data");
+            }
+        };
+        fetchData();
+    },[]);
+    console.log(idp,"id");
+
+    // const [events, setevent] = useState<events[]>([]);
+    // useEffect(() => onSnapshot (eventCollection,(snapshot: QuerySnapshot<DocumentData>): any => {
+    //     setevent(
+    //         snapshot.docs.map((doc) => {
+    //             return{
+    //                 id: doc.id,
+    //                 ...doc.data(),
+    //             };
+    //         })
+    //     );
+    //     }),[]
+    // ); 
+
+
+
     return(
     <>
-        <Navbar></Navbar>
+
         <div className={styles.container}>
             <div className={styles.title}>Sự kiện 1</div>
             <div className={styles.containerMain}>
@@ -25,12 +68,21 @@ const Contact =(props: Prop)=>{
                             <p>55.000 VNĐ</p>
                          </div>
                     </div>
-                    <div className={styles.column}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                    It has survived not only five centuries, but also the leap into electronic sdsd typesetting, 
-                    remaining cssa essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                    of Lorem Ipsum.</div>
+                    <div className={styles.column}>
+                        {Object.keys(event) && Object.keys(event).length > 0 ? (
+                        <Infomation event={event}  />
+                        ) : null}
+                   {/* {events && events.length ? (
+                                <div >
+                                    {events?.map((event)=>(
+                                        <Infomation key={event.id} event= {event}/>
+                                    ))}
+                                </div>
+                            ):(
+                                <h2>null</h2>
+                            )}  */}
+
+                    </div>
 
                     <div className={styles.column}>
                         <div className={styles.event1}></div>
@@ -49,4 +101,4 @@ const Contact =(props: Prop)=>{
     </>
     )
 }
-export default Contact
+export default EventDetails

@@ -1,5 +1,5 @@
 import { type } from "os"
-import logo from '../assets/Logo (ngang).png';
+import logo from '../../assets/Logo (ngang).png';
 import React, {useState} from 'react'
 import styles from './index.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -2,13 +2,13 @@ import { type } from "os"
 import logo from '../assets/image.png';
 import React, {useState} from 'react'
 import styles from './Contact.module.css'
-import Navbar from "../../navbar";
+
 import Alex from '../../assets/Alex_AR_Lay_Do shadow 1.png'
 type Prop={}
 const Contact =(props: Prop)=>{
     return(
     <>
-        <Navbar></Navbar>
+
         <div className={styles.container}>
             <div className={styles.title}>Liên hệ</div>
             <img src={Alex} alt="human" className={styles.Alex} />
@@ -19,16 +19,16 @@ const Contact =(props: Prop)=>{
                         Suspendisse ac mollis justo. Etiam volutpat tellus quis risus volutpat, ut posuere ex facilisis.</p>
                         <div className={styles.info}>
                             <div className={styles.nameAndphone}>
-                                <input className={styles.input}type="text"placeholder="Số lượng vé"/>
-                                <input className={styles.input}type="text"placeholder="Ngày sử dụng"/>
+                                <input className={styles.input}type="text"placeholder="Tên"/>
+                                <input className={styles.input}type="text"placeholder="Số điện thoại"/>
                             </div>
 
                             <div className={styles.emailAndAddress}>
-                                <input className={styles.input}type="text"placeholder="Số lượng vé"/>
-                                <input className={styles.input}type="text"placeholder="Ngày sử dụng"/>
+                                <input className={styles.input}type="text"placeholder="Email"/>
+                                <input className={styles.input}type="text"placeholder="Địa chỉ"/>
                             </div>
                         </div>
-                        <input className={styles.note}type="text"placeholder="Ngày sử dụng"/>
+                        <input className={styles.note}type="text"placeholder="Lời nhắn"/>
                         <div className={styles.btn}><button className={styles.btn1}>Xem chi tiết</button></div>
                         
                     </div>

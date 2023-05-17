@@ -2,7 +2,7 @@ import { type } from "os"
 import logo from '../assets/image.png';
 import React, {useState} from 'react'
 import styles from './pay.module.css'
-import Navbar from "../../navbar";
+import Navbar from "../../component/navbar";
 import Trini from '../../assets/Trini_Arnold_Votay1 2.png'
 type Prop={}
 const Contact =(props: Prop)=>{

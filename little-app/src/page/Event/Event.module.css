@@ -31,7 +31,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
     gap: 30px;
+}
+.contain_main{
+    padding-left: 20px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
+    /* identical to box height, or 89% */
+    width: 80%;
+    color: #444444;
 }
 .contain_next{
     background-image: url(../../assets/next\ btn.png);
@@ -56,23 +68,30 @@
 }
 .contain_event{
     gap: 30px;
-    display:inline-flex;
-    
+    display:flex;
+    flex-direction: row;
 }
 .contain_event>div{
-    width: 280px;
+    width: 100%;
+    height: 400px;
+    margin-top: 40px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.contain_event>div>div>div>div{
     height: 400px;
     background: #FFFFFF;
     margin-top: 40px;
     border-radius: 15px;
+    display: flex;
+
 }
 .contain_event>div>div:first-child{
-    background-repeat: no-repeat;
-    width: 100%;
-    height:190px;
-    background-size:100%;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
+    margin-left: -25px;
+}
+.contain_event>div>div:last-child{
+    margin-right: -25px;
 }
 .event1_img{
     background-image: url(../../assets/event1.png);
@@ -94,12 +113,10 @@
     font-size: 15px;
     line-height: 16px;
     /* identical to box height, or 89% */
-
     color: #444444;
 }
 .event_main>div{
     display: flex;
-
     gap: 10px;
 }
 .event_main>p{
@@ -146,4 +163,19 @@
     line-height: 22px;
     text-decoration:none
 
+}
+
+.slick-slider.slick-initialized {
+    top: 300px;
+    width: 85%;
+    margin: auto;
+    left: 11px;
+    display: flex;
+    flex-direction: row;
+}
+.slick-slider.slick-initialized {
+    top: 300px;
+    width: 85%;
+    margin: auto;
+    left: 11px;
 }

@@ -1,48 +1,62 @@
-import { type } from "os"
-import logo from '../assets/image.png';
 import styles from './Home.module.css'
 import start from "../../assets/start.png"
 import logo_damsen from "../../assets/logo_damsen.png"
 import girl from "../../assets/girl.png"
 import human from '../../assets/4_human.png'
-import Navbar from "../../navbar";
-import { useState, useEffect } from 'react';
+import React ,{ useState, useEffect } from 'react';
 import { DatePicker } from 'antd';
-import MyComponent from "../../component/calender/calender"
-
-type Prop={}
-const Home =(props: Prop)=>{
-
-
-        const [Ticket, setTicket] = useState('');
+import { useNavigate } from "react-router-dom";
+import { addNewTicket } from "../lb/controller";
+function Home (){
+    
+    const navigate =useNavigate();
+    const newTicket =(e:React.FormEvent<HTMLFormElement>)=>{
+        e.preventDefault();
+        addNewTicket({
+            Name,
+            Email,
+            Phone,
+            Type,
+            Amount,
+            SelectedDate,
+        });
+        if (!Amount) {
+            alert('Vui lòng nhập số lượng vé');
+            return;
+        }else if (!Name) {
+            alert('Vui lòng nhập họ và tên');
+            return;
+        } else if (!Phone) {
+            alert('Vui lòng nhập số điện thoại');
+            return;
+        }else if (!Email) {
+            alert('Vui lòng nhập email');
+            return;
+        }else if (!Type) {
+            alert('Vui lòng chọn gói');
+            return;
+        }else if (!SelectedDate) {
+            alert('Vui lòng chọn gói');
+            return;
+        }
+        console.log("thanh cong them ve moi");
+        navigate('/pay')
+    };
+   
+        const [StartDate, setStartDate] =useState(new Date());
+        function onChangeDate(value:any){
+            setStartDate(value)
+        }
+        const SelectedDate = String(StartDate);
+        const [Amount, setAmount] = useState('');
         const [Name, setName] = useState('');
         const [Phone, setPhone] = useState('');
         const [Email, setEmail] = useState('');
-        const [Package, setPackage] = useState('');
-        const [Datepicker, setDatepicker] = useState('');
-        const handleSubmit = (e: { preventDefault: () => void; }) => {
-            e.preventDefault();
-            if (!Ticket) {
-                alert('Vui lòng nhập số lượng vé');
-                return;
-            }else if (!Name) {
-                alert('Vui lòng nhập họ và tên');
-                return;
-            } else if (!Phone) {
-                alert('Vui lòng nhập số điện thoại');
-                return;
-            }else if (!Email) {
-                alert('Vui lòng nhập email');
-                return;
-            }else if (!Package) {
-                alert('Vui lòng chọn gói');
-                return;
-            }
-            // Gọi API đăng nhập tại đây
-        };
+        const [Type, setType] = useState('');
+
     return(
     <>
-    <Navbar></Navbar>
+
     <div className={styles.container}>
             <img src={human} alt="human" className={styles.human} />
             <img src={girl} alt="girl" className={styles.girl} />
@@ -84,10 +98,10 @@ const Home =(props: Prop)=>{
                 <div className={styles.body_note_2}></div>
 
                 <div className={styles.body_note_3}>
-                <form onSubmit={handleSubmit} >
+                <form onSubmit={(e)=>newTicket(e)} >
                     <div className={styles.body_selection} >
-                        <select name="cars" id="Package" onChange={(e) => setPackage(e.target.value)} >
-                            <option value="Gd">Gói gia đình</option>
+                        <select name="cars" id="Type"  onChange={(e) => setType(e.target.value)} >
+                            <option value="Gói gia đình">Gói gia đình</option>
                             <option value="Gd1">Gói gia đình1</option>
                             <option value="Gd2">Gói gia đình2</option>
                             <option value="Gd3">Gói gia đình3</option>
@@ -95,11 +109,13 @@ const Home =(props: Prop)=>{
                     </div>
 
                     <div className={styles.TicketAndDate}>
-                        <input className={styles.Ticket}type="text"placeholder="Số lượng vé" onChange={(e) => setTicket(e.target.value)} />
-                        <MyComponent />
+                        <input className={styles.Ticket}type="text"placeholder="Số lượng vé"onChange={(e) => setAmount(e.target.value)} />
+                        <div className={styles.dateAndBtn}>
+                            <DatePicker onChange={onChangeDate} />
+                        </div>
                     </div>
 
-                    <input type="text" placeholder="Họ và tên" onChange={(e) => setName(e.target.value)}/>
+                    <input type="text" placeholder="Họ và tên"  onChange={(e) => setName(e.target.value)}/>
                     <input type="text" placeholder="Số điện thoại" onChange={(e) => setPhone(e.target.value)}/>
                     <input type="text" placeholder="Địa chỉ email" onChange={(e) => setEmail(e.target.value)}/>
 

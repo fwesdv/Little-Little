@@ -1,12 +1,15 @@
-import { DatePicker } from 'antd';
-import  styles from "./calender.module.css";
+import { DatePicker } from 'antd'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import 'react-datepicker/dist/react-datepicker.module.css'
+export class calender extends Component {
+  static propTypes = {}
 
-function MyComponent (){
-  return (
-    <div className={styles.dateAndBtn}>
-      <DatePicker className={styles.date} placeholder="Ngày sử dụng"/>
-    </div>
-  );
-};
+  render() {
+    return (
+        <DatePicker />
+    )
+  }
+}
 
-export default MyComponent;
+export default calender
