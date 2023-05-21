@@ -59,13 +59,13 @@ function Pay() : JSX.Element{
 
         switch (true) {
             case !bankCardN:
-                alert('Vui lòng nhập số lượng vé');
+                alert('Vui lòng nhập số thẻ ngân hàng');
                 return;
             case !Name:
                 alert('Vui lòng nhập họ và tên');
                 return;
             case !CVC:
-                alert('Vui lòng nhập email');
+                alert('Vui lòng nhập CVC');
                 return;
             case !Dayend:
                 alert('Vui lòng chọn ngày');

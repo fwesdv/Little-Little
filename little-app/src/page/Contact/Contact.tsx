@@ -3,8 +3,7 @@ import styles from './Contact.module.css'
 
 import Alex from '../../assets/Alex_AR_Lay_Do shadow 1.png'
 import { addNewContact } from "../lb/controller";
-import { useNavigate } from 'react-router-dom';
-
+import Modal, { ModalBody } from '../../component/modal/Modal';
 function Contact (){
 
     
@@ -18,7 +17,7 @@ function Contact (){
             Email
         });
         switch (true) {
-            case !Description:
+            case !Address:
               alert('Vui lòng nhập số lượng vé');
                 return;
             case !Name:
@@ -36,21 +35,20 @@ function Contact (){
             case !/\S+@\S+\.\S+/.test(Email):
                 alert('Vui lòng nhập email đúng định dạng');
                 return;
-
             default:
-              
           }
+        if (Name && Phone && Email && Address) {
+            setShowModal(true);
+        }
         console.log("thanh cong them ve moi");
 
     };
-    const navigate =useNavigate();
-    navigate(`/`)
         const [Address, setAddress] = useState('');
         const [Name, setName] = useState('');
         const [Email, setEmail] = useState('');
         const [Description, setDescription] = useState('');
         const [Phone, setPhone] = useState('');
-
+        const [showModal, setShowModal] = useState(false);
     return(
     <>
 
@@ -97,6 +95,18 @@ function Contact (){
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <div>
+            <Modal show={showModal} setShow={setShowModal}>
+                <ModalBody>
+                    <br></br>
+                    <p style={{ textAlign: 'justify' }}>
+                        Gửi liên hệ thành công.<br></br>
+                        Vui lòng kiên nhẫn đợi phản hồi từ chúng tôi, bạn nhé!
+                    </p>
+                </ModalBody>
+            </Modal>
         </div>
     </>
     )
