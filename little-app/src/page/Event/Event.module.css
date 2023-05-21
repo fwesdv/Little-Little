@@ -35,14 +35,12 @@
     gap: 30px;
 }
 .contain_main{
-    padding-left: 20px;
+
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
     line-height: 16px;
-    /* identical to box height, or 89% */
-    width: 80%;
     color: #444444;
 }
 .contain_next{
@@ -66,44 +64,33 @@
     cursor: pointer;
     filter: drop-shadow(0px 3px 2px #DE9959);
 }
-.contain_event{
-    gap: 30px;
-    display:flex;
-    flex-direction: row;
-}
 .contain_event>div{
-    width: 100%;
-    height: 400px;
+    width: 1200px;
     margin-top: 40px;
     display:flex;
     justify-content: center;
     align-items: center;
 }
-.contain_event>div>div>div>div{
-    height: 400px;
-    background: #FFFFFF;
-    margin-top: 40px;
-    border-radius: 15px;
+.contain_event>div>div::before{
+    display: none;
+}
+.contain_event>div>div>div{
     display: flex;
-
+    gap: 20px;
 }
 .contain_event>div>div:first-child{
-    margin-left: -25px;
+    left: -60px;
 }
 .contain_event>div>div:last-child{
-    margin-right: -25px;
+    margin-right: -20px;
 }
-.event1_img{
-    background-image: url(../../assets/event1.png);
-}
-.event2_img{
-    background-image: url(../../assets/event1.png);
-}
-.event3_img{
-    background-image: url(../../assets/event3.png);
-}
-.event4_img{
-    background-image: url(../../assets/event4.png);
+.event_img>img{
+    background-repeat: no-repeat;
+    width: 100%;
+    height:190px;
+    background-size:100%;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 .event_main{
     padding-left: 20px;
@@ -112,7 +99,90 @@
     font-weight: 500;
     font-size: 15px;
     line-height: 16px;
-    /* identical to box height, or 89% */
+    color: #444444;
+}
+.event_main>div{
+    display: flex;
+    gap: 10px;
+}
+.event_main>p{
+    margin: 0;
+    font-size: 18px;
+}
+.event_main :nth-child(1){
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 37px;
+    color: #23221F;
+    margin-top: 10px;
+ }
+.event_main :nth-child(4){
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 45px;
+    
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.005em;
+    margin-bottom: 5px;
+    color: #FA7D09;
+}
+.calendar_icon {
+    width: 24px;
+    height: 24px;
+    background-image: url('../../assets/calendar.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    filter: drop-shadow(0px 3px 2px #DE9959);
+}
+.btn {
+    padding: 5px 30px 5px 30px;
+
+    background: #FF000A;
+    border: none;
+    border-radius: 5px ;
+    filter: drop-shadow(0px 3px 2px #000000);
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-decoration:none
+
+}
+.event{
+    height: 400px;
+    background: #FFFFFF;
+    margin-top: 40px;
+    border-radius: 15px;
+}
+
+/* 
+
+.contain_event>div>div:first-child{
+    left: -80px;
+}
+.contain_event>div>div:last-child{
+    margin-right: -25px;
+}
+
+.event_img{
+    background-repeat: no-repeat;
+    width: 100%;
+    height:190px;
+    background-size:100%;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    background-image: url(https://www.damsenwaterpark.com.vn/wp-content/uploads/DSN-ho-thieu-nhi.jpg);
+}
+
+.event_main{
+    padding-left: 20px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
     color: #444444;
 }
 .event_main>div{
@@ -178,4 +248,4 @@
     width: 85%;
     margin: auto;
     left: 11px;
-}
+} */

@@ -1,81 +1,77 @@
-import { type } from "os"
-import logo from '../assets/image.png';
-import React, {useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import styles from './PaymentSuccess.module.css'
-import Navbar from "../../component/navbar";
 import Alvin from '../../assets/Alvin_Arnold_Votay1 1.png'
-type Prop={}
-const Contact =(props: Prop)=>{
+import { useParams } from "react-router-dom";
+import { doc, getDoc, getFirestore } from "@firebase/firestore";
+import html2canvas from 'html2canvas';
+
+function Contact (){
+
+    const  bankCardId  =useParams().id;
+    const db = getFirestore();
+    useEffect(() => {
+      const fetchData = async () => {
+        const docRef = doc(db, 'bankCard',String(bankCardId));
+        const docSnap = await getDoc(docRef);
+        const data = docSnap.data();
+        if (data) {
+            setTicketId(data.TicketId);
+        }
+      };
+      fetchData();
+    }, [db]);
+    const [TicketId, setTicketId] = useState('');
+    
+
+    const fetchData = async () => {
+          const docRef = doc(db, 'ticket', TicketId);
+          const docSnap = await getDoc(docRef);
+          const data = docSnap.data();
+          if (data) {
+            setSelectedDate(data.SelectedDate);
+          }
+      };
+      fetchData();
+      const [SelectedDate, setSelectedDate] = useState('');
+
+      const png = useRef(null);
+      const handleDownloadClick = () => {
+        if (png.current) {
+            html2canvas(png.current).then((canvas) => {
+                const link = document.createElement('a');
+                link.download = 'Ticket.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+    };
     return(
     <>
-        <Navbar></Navbar>
         <div className={styles.container}>
             <div className={styles.title}>Thanh toán thành công</div>
             <img src={Alvin} alt="human" className={styles.Alvin} />
             <div className={styles.containerMain}>
-
-                <div className={styles.contain_previous}></div>
-                <div className={styles.contain_event}>
+                <div ref={png} className={styles.contain_event}>
                     <div >
                         <div className={styles.event1}>
                             <div className={styles.QrCode}></div>
                             <div className={styles.event_main}>
-                                <p>ALT20210501</p>
+                                <p>{TicketId}</p>
                                 <p>VÉ CỔNG</p>
                                 <p>---</p>
-                                <p>Ngày sử dụng: 31/05/2021</p>
+                                <p>Ngày sử dụng: {SelectedDate}</p>
                                 <div className={styles.event1_tick}></div>
 
                             </div>
                         </div>
-                        <div className={styles.event2}>
-                        <div className={styles.QrCode}></div>
-                            <div className={styles.event_main}>
-                                <p>ALT20210501</p>
-                                <p>VÉ CỔNG</p>
-                                <p>---</p>
-                                <p>Ngày sử dụng: 31/05/2021</p>
-                                <div className={styles.event1_tick}></div>
-
-                            </div>
-                        </div>
-                        <div className={styles.event3}>
-                        <div className={styles.QrCode}></div>
-                            <div className={styles.event_main}>
-                                <p>ALT20210501</p>
-                                <p>VÉ CỔNG</p>
-                                <p>---</p>
-                                <p>Ngày sử dụng: 31/05/2021</p>
-                                <div className={styles.event1_tick}></div>
-
-                            </div>
-                        </div>
-                        <div className={styles.event4}>
-                        <div className={styles.QrCode}></div>
-                            <div className={styles.event_main}>
-                                <p>ALT20210501</p>
-                                <p>VÉ CỔNG</p>
-                                <p>---</p>
-                                <p>Ngày sử dụng: 31/05/2021</p>
-                                <div className={styles.event1_tick}></div>
-
-                            </div>
-                        </div>
-                    </div>
-                    
-
-                    <div className={styles.contain_bot}>
-                        <p >Số lượng: 12 vé</p>
-                        <p >Trang 1/3</p>
                     </div>
                 </div>
-                <div className={styles.contain_next}></div>
-                
             </div>
 
             <div className={styles.btn_2}>
-                <a href="/eventDetails"className={styles.btn}>Tải về</a>
-                <a href="/eventDetails"className={styles.btn}>Gửi Email</a>
+                
+                <a className={styles.btn} onClick={handleDownloadClick}>Tải về</a>
+                <a href="/"className={styles.btn}>Gửi Email</a>
             </div>
         </div>
     </>

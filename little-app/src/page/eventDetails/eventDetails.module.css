@@ -40,7 +40,7 @@
     width: 300px;
     
 }
-.event4_img{
+.event_img{
     gap: 30px;
     display:inline-flex;
     width: 280px;
@@ -48,9 +48,8 @@
     background: #FFFFFF;
     margin-top: 40px;
     border-radius: 5px;
-    background-image: url(../../assets/detailEvent4.png);
+    background-image: url("../../assets/detailEvent4.png");
     background-repeat: no-repeat;
-
     background-size:100%;
 }
 .event1{

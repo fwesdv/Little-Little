@@ -3,51 +3,93 @@ import start from "../../assets/start.png"
 import logo_damsen from "../../assets/logo_damsen.png"
 import girl from "../../assets/girl.png"
 import human from '../../assets/4_human.png'
-import React ,{ useState, useEffect } from 'react';
+import React ,{ useState } from 'react';
 import { DatePicker } from 'antd';
 import { useNavigate } from "react-router-dom";
-import { addNewTicket } from "../lb/controller";
-function Home (){
-    
+import {  ticketCollection } from "../lb/controller";
+import { ticket } from '../../types/ticket'
+import { addDoc} from "@firebase/firestore";
+function Home (): JSX.Element{  
+    interface TypeValues {
+        [key: string]: number;
+      }
+
+    const addNewTicket =async(ticketData:ticket)=>{ 
+        try {
+            const newTicket = await addDoc(ticketCollection, { ...ticketData });
+            const documentId = newTicket.id;
+            return documentId;
+          } catch (error) {
+            console.error('Error adding new ticket:', error);
+          }
+    }
+
     const navigate =useNavigate();
-    const newTicket =(e:React.FormEvent<HTMLFormElement>)=>{
+    const newTicket =async (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
-        addNewTicket({
+        const typeValues: TypeValues = {
+            Gd1: 25000,
+            Gd2: 50000,
+            Gd3: 75000
+          };
+
+        const ticketDocumentId = await addNewTicket({
             Name,
             Email,
             Phone,
             Type,
             Amount,
             SelectedDate,
+            Price: Number(Amount) * typeValues[Type],
         });
-        if (!Amount) {
-            alert('Vui lòng nhập số lượng vé');
-            return;
-        }else if (!Name) {
-            alert('Vui lòng nhập họ và tên');
-            return;
-        } else if (!Phone) {
-            alert('Vui lòng nhập số điện thoại');
-            return;
-        }else if (!Email) {
-            alert('Vui lòng nhập email');
-            return;
-        }else if (!Type) {
-            alert('Vui lòng chọn gói');
-            return;
-        }else if (!SelectedDate) {
-            alert('Vui lòng chọn gói');
-            return;
-        }
+        switch (true) {
+            case !Amount:
+              alert('Vui lòng nhập số lượng vé');
+                return;
+            case !Name:
+                alert('Vui lòng nhập họ và tên');
+                return;
+            case !Phone:
+                alert('Vui lòng nhập số điện thoại');
+                return;
+            case !/^\d{10}$/i.test(Phone):
+                alert('Số điện thoại phải đủ 10 số');
+                return;
+            case !Email:
+                alert('Vui lòng nhập email');
+                return;
+            case !/\S+@\S+\.\S+/.test(Email):
+                alert('Vui lòng nhập email đúng định dạng');
+                return;
+            case !Type:
+                alert('Vui lòng chọn gói');
+                return;
+            case !SelectedDate:
+                alert('Vui lòng chọn ngày');
+                return;
+            default:
+              
+          }
         console.log("thanh cong them ve moi");
-        navigate('/pay')
+        navigate(`/pay/${ticketDocumentId}`)
     };
-   
+    
+
+
         const [StartDate, setStartDate] =useState(new Date());
         function onChangeDate(value:any){
             setStartDate(value)
         }
-        const SelectedDate = String(StartDate);
+        
+        //chuyển đổi chuỗi ngày tháng
+        const dateString = StartDate;
+        const dateObject = new Date(dateString);
+        const day = dateObject.getDate();
+        const month = dateObject.getMonth() + 1; 
+        const year = dateObject.getFullYear();
+        const formattedDate = `${day}/${month}/${year}`;
+
+        const SelectedDate = String(formattedDate);
         const [Amount, setAmount] = useState('');
         const [Name, setName] = useState('');
         const [Phone, setPhone] = useState('');
@@ -98,6 +140,7 @@ function Home (){
                 <div className={styles.body_note_2}></div>
 
                 <div className={styles.body_note_3}>
+                
                 <form onSubmit={(e)=>newTicket(e)} >
                     <div className={styles.body_selection} >
                         <select name="cars" id="Type"  onChange={(e) => setType(e.target.value)} >
@@ -111,7 +154,7 @@ function Home (){
                     <div className={styles.TicketAndDate}>
                         <input className={styles.Ticket}type="text"placeholder="Số lượng vé"onChange={(e) => setAmount(e.target.value)} />
                         <div className={styles.dateAndBtn}>
-                            <DatePicker onChange={onChangeDate} />
+                            <DatePicker className={styles.date} onChange={onChangeDate} format="DD/MM/YYYY" />         
                         </div>
                     </div>
 
@@ -119,10 +162,10 @@ function Home (){
                     <input type="text" placeholder="Số điện thoại" onChange={(e) => setPhone(e.target.value)}/>
                     <input type="text" placeholder="Địa chỉ email" onChange={(e) => setEmail(e.target.value)}/>
 
-                    <button type="submit" id="submit"  className={styles.btn}>Đặt vé</button>
-
-                    <div className={styles.body_red_tiker}></div>
+                    <button type="submit" id="submit"  className={styles.btn}>
+                        Đặt vé</button>
                 </form>
+                <div className={styles.body_red_tiker}>VÉ CỦA BẠN</div>
                 </div>
             </div>
             </div>

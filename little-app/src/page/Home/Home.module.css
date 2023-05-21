@@ -193,9 +193,15 @@
     border-radius: 10px;
     border: none;
 }
-
-.body_note_3>form>.TicketAndDate>.Ticket {
-    width: 40%;
+.date {
+    padding: 10px;
+    height: 40px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 10px;
+    border: none;
+    width: 100%;
 }
 
 .body_note_3>form>div>.dateAndBtn {
@@ -206,9 +212,7 @@
     width: 60%;
 }
 
-.body_note_3>form>div>.dateAndBtn>.date {
-    width: 100%;
-}
+
 
 .body_note_3>form>div>.dateAndBtn>.calendar_icon {
     width: 30px;
@@ -236,6 +240,7 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
+    cursor: pointer;
 }
 
 
@@ -263,4 +268,26 @@
     background-size: contain;
     cursor: pointer;
     filter: drop-shadow(0px 3px 2px #DE9959);
+}
+
+.body_note_3>.body_red_tiker,
+.body_red_tiker {
+    position: absolute;
+    top: -20px;
+    right: 160px;
+    width: 230px;
+    z-index: 5;
+    background-image: url('../../assets/red_tiker.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    color: #fff;
+    font-family: 'iCiel Koni';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 21px;
+    line-height: 41px;
 }

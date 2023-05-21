@@ -1,11 +1,56 @@
-import { type } from "os"
-import logo from '../assets/image.png';
 import React, {useState} from 'react'
 import styles from './Contact.module.css'
 
 import Alex from '../../assets/Alex_AR_Lay_Do shadow 1.png'
-type Prop={}
-const Contact =(props: Prop)=>{
+import { addNewContact } from "../lb/controller";
+import { useNavigate } from 'react-router-dom';
+
+function Contact (){
+
+    
+    const newContact =async (e:React.FormEvent<HTMLFormElement>)=>{
+        e.preventDefault();
+        addNewContact({
+            Address,
+            Name,
+            Description,
+            Phone,
+            Email
+        });
+        switch (true) {
+            case !Description:
+              alert('Vui lòng nhập số lượng vé');
+                return;
+            case !Name:
+                alert('Vui lòng nhập họ và tên');
+                return;
+            case !Phone:
+                alert('Vui lòng nhập số điện thoại');
+                return;
+            case !/^\d{10}$/i.test(Phone):
+                alert('Số điện thoại phải đủ 10 số');
+                return;
+            case !Email:
+                alert('Vui lòng nhập email');
+                return;
+            case !/\S+@\S+\.\S+/.test(Email):
+                alert('Vui lòng nhập email đúng định dạng');
+                return;
+
+            default:
+              
+          }
+        console.log("thanh cong them ve moi");
+
+    };
+    const navigate =useNavigate();
+    navigate(`/`)
+        const [Address, setAddress] = useState('');
+        const [Name, setName] = useState('');
+        const [Email, setEmail] = useState('');
+        const [Description, setDescription] = useState('');
+        const [Phone, setPhone] = useState('');
+
     return(
     <>
 
@@ -15,22 +60,25 @@ const Contact =(props: Prop)=>{
             <div className={styles.contai}>
                 <div className={styles.contai_main}>        
                     <div >
-                        <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Suspendisse ac mollis justo. Etiam volutpat tellus quis risus volutpat, ut posuere ex facilisis.</p>
-                        <div className={styles.info}>
-                            <div className={styles.nameAndphone}>
-                                <input className={styles.input}type="text"placeholder="Tên"/>
-                                <input className={styles.input}type="text"placeholder="Số điện thoại"/>
-                            </div>
+                            <p className="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Suspendisse ac mollis justo. Etiam volutpat tellus quis risus volutpat, ut posuere ex facilisis.</p>
+                        <form onSubmit={(e)=>newContact(e)}>
+                            <div className={styles.info}>
+                                <div className={styles.nameAndphone}>
+                                    <input className={styles.input}type="text"placeholder="Tên" onChange={(e) => setName(e.target.value)}/>
+                                    <input className={styles.input}type="text"placeholder="Số điện thoại" onChange={(e) => setPhone(e.target.value)}/>
+                                </div>
 
-                            <div className={styles.emailAndAddress}>
-                                <input className={styles.input}type="text"placeholder="Email"/>
-                                <input className={styles.input}type="text"placeholder="Địa chỉ"/>
+                                <div className={styles.emailAndAddress}>
+                                    <input className={styles.input}type="text"placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
+                                    <input className={styles.input}type="text"placeholder="Địa chỉ" onChange={(e) => setAddress(e.target.value)}/>
+                                </div>
                             </div>
-                        </div>
-                        <input className={styles.note}type="text"placeholder="Lời nhắn"/>
-                        <div className={styles.btn}><button className={styles.btn1}>Xem chi tiết</button></div>
-                        
+                            <input className={styles.note}type="text"placeholder="Lời nhắn" onChange={(e) => setDescription(e.target.value)}/>
+                            
+                            <div className={styles.btn}>
+                            <button type="submit" id="submit" className={styles.btn1}>Gửi liên hệ</button></div>
+                        </form> 
                     </div>
                     
                 </div>

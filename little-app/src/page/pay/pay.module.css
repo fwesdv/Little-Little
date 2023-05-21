@@ -58,8 +58,8 @@
 }
 
 
-.info_h>div>input,
-.info>div:nth-child(2)>input
+.info_h>div>.input,
+.info>div:nth-child(2)>.input
 {
     padding: 10px;
     height: 40px;
@@ -70,7 +70,12 @@
     border-radius: 10px;
     border: none;
 }
-.info_h>div>div>input{
+.info_h>div>div{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.info_h>div>div>.input{
     width: 100px;
     padding: 10px;
     height: 40px;
@@ -80,7 +85,7 @@
     border-radius: 10px;
     border: none;
 }
-.info>div>input
+.info>div>.input
 {
     padding: 10px;
     height: 40px;
@@ -134,13 +139,19 @@
     flex-direction: column;
     gap: 10px;
 }
-.body_note_3>div>div{
+.body_form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.body_form>div{
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
-.body_note_3>div>div>input,
-.body_note_3>div>div>div>input{
+.body_form>div>input,
+.body_form>div>div>input{
     padding: 10px;
     height: 40px;
     width: 300px;
@@ -150,8 +161,27 @@
     border-radius: 10px;
     border: none;
 }
-.body_note_3>div>div:last-child>input{
-    width: 100px;
+.body_form>div:nth-child(4)>input{
+    width: 30%;
+}
+.DatePicker{
+    width: 100%;
+}
+.DatePicker_1{
+    padding: 10px;
+    height: 40px;
+    width: 260px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+    border-radius: 10px;
+    border: none;
+}
+
+.btn_1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .dateAndBtn>div {

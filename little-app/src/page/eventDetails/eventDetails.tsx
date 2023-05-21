@@ -1,53 +1,35 @@
-import { type } from "os"
-import logo from '../assets/image.png';
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import styles from './eventDetails.module.css'
 import { useParams } from "react-router-dom";
-import { eventCollection, firestore } from "../lb/controller";
-import { DocumentData, DocumentReference, DocumentSnapshot, QuerySnapshot, doc, getDoc, onSnapshot } from "@firebase/firestore";
-import { events } from "../../types/events";
-import Infomation from "../../component/InfomationEvent/eventDIF";
-import { firebase } from "../lb/firebase";
+import { doc, getDoc, getFirestore } from "@firebase/firestore";
 
 function EventDetails (){
-    const { idp } =useParams();
-    const getevent = doc (firestore, `/event/${idp}` )
-    const [isloading, setIsloading] = useState(false);
 
-    const [event, setevent] = useState({});
-    useEffect(()=>{
-        const fetchData = async () =>{
-            setIsloading(true);
-            const docsnap = await getDoc(getevent);
-            if(docsnap.exists()){
-                const newevent={
-                    id: docsnap.id,
-                    ...docsnap.data(),
-                }
-                setevent(newevent);
-                setIsloading(false);
-            }else{
-                console.log("no data");
-            }
-        };
-        fetchData();
-    },[]);
-    console.log(idp,"id");
-
-    // const [events, setevent] = useState<events[]>([]);
-    // useEffect(() => onSnapshot (eventCollection,(snapshot: QuerySnapshot<DocumentData>): any => {
-    //     setevent(
-    //         snapshot.docs.map((doc) => {
-    //             return{
-    //                 id: doc.id,
-    //                 ...doc.data(),
-    //             };
-    //         })
-    //     );
-    //     }),[]
-    // ); 
-
-
+    const  eventId  =useParams().id;
+    const eventid= String(eventId)
+    console.log(eventid,"eventId")
+    const db = getFirestore();
+    useEffect(() => {
+      const fetchData = async () => {
+        const docRef = doc(db, 'events', eventid);
+        const docSnap = await getDoc(docRef);
+        const data = docSnap.data();
+        console.log(data,"eventId")
+        if (data) {
+            setPrice(data.price);
+            setName(data.name);
+            setdateStart(data.dateStart);
+            setdateEnd(data.dateEnd);
+            setimage(data.image);
+        }
+      };
+      fetchData();
+    }, [db]);
+    const [price, setPrice] = useState('');
+    const [name, setName] = useState('');
+    const [dateStart, setdateStart] = useState('');
+    const [dateEnd, setdateEnd] = useState('');
+    const [image, setimage] = useState('');
 
     return(
     <>
@@ -56,32 +38,24 @@ function EventDetails (){
             <div className={styles.title}>Sự kiện 1</div>
             <div className={styles.containerMain}>
                     <div className={styles.event4}>
-                        <div className={styles.event4_img}></div>
-
+                        <img className={styles.event_img} src={image}/>
                         <div className={styles.event_main}>
                             
                             <div > 
                                 <div className={styles.calendar_icon}></div>
-                                <p>30/05/2021 - 01/06/2021</p>
+                                <p>{dateStart} - {dateEnd}</p>
                             </div>
-                            <p>Đầm sen Park</p>
-                            <p>55.000 VNĐ</p>
+                            <p>{name}</p>
+                            <p>{price} VNĐ</p>
                          </div>
                     </div>
                     <div className={styles.column}>
-                        {Object.keys(event) && Object.keys(event).length > 0 ? (
-                        <Infomation event={event}  />
-                        ) : null}
-                   {/* {events && events.length ? (
-                                <div >
-                                    {events?.map((event)=>(
-                                        <Infomation key={event.id} event= {event}/>
-                                    ))}
-                                </div>
-                            ):(
-                                <h2>null</h2>
-                            )}  */}
-
+                        <p className="">Lorem Ipsum is trúedummy text of the printing and typesetting industry. 
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
+                        unknown printer took a galley of type and scrambled it to make a type specimen book. It has 
+                        survived not only five centuries, but also the leap into electronic sdsd typesetting, remaining cssa 
+                        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing 
+                        Lorem Ipsum passages, of Lorem Ipsum.</p>
                     </div>
 
                     <div className={styles.column}>

@@ -1,0 +1,24 @@
+.container {
+    padding-left: 75px;
+    padding-right: 61px;
+    box-sizing: border-box;
+    position: relative;
+    width: 1517px;
+    height: 856px;
+    background-image: url("../../assets/contact\ us.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    gap: 10px;
+    padding-top: 40px;
+}
+.container>p{
+    font-family: 'iCiel Koni';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 80px;
+    color: #ffffff;
+}
